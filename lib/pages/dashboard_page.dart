@@ -24,7 +24,7 @@ class _DashboardPageState extends State<DashboardPage> {
             padding: EdgeInsets.all(4.0),
             child: CircleAvatar(
               radius: 20,
-              backgroundImage: AssetImage('assets/ipincamp.jpg'),
+              backgroundImage: NetworkImage('https://avatars.githubusercontent.com/u/70874414?v=4'),
             ),
           ),
           SizedBox(width: 4.0),

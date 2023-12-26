@@ -1,10 +1,21 @@
 # noteify
 
-A new Flutter project.
+Simple Note App
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
+
+```sh
+# Install all dependencies
+flutter pub get
+
+# Build APK (Debug)
+flutter build apk --debug
+
+# Build APK (Release)
+flutter build apk
+```
 
 A few resources to get you started if this is your first Flutter project:
 
