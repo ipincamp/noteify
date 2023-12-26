@@ -21,63 +21,65 @@ class _AddNotePageState extends State<AddNotePage> {
       appBar: AppBar(
         title: const Text('Add New Note'),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextFormField(
-              controller: widget.titleController,
-              decoration: const InputDecoration(labelText: 'Title'),
-            ),
-            const SizedBox(height: 16.0),
-            DropdownButtonFormField(
-              value: widget.selectedCategory,
-              items: [
-                'Work',
-                'Personal',
-                'Shopping',
-                'Ideas',
-                'Project',
-                'Meetings',
-                'Education',
-                'Finance',
-                'Health',
-                'Travel'
-              ]
-                  .map((category) => DropdownMenuItem(
-                        value: category,
-                        child: Text(category),
-                      ))
-                  .toList(),
-              decoration: const InputDecoration(labelText: 'Category'),
-              onChanged: (value) {
-                setState(() {
-                  widget.selectedCategory = value.toString();
-                });
-              },
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              controller: widget.contentController,
-              decoration: const InputDecoration(labelText: 'Note Content'),
-              maxLines: 5,
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                saveNote(context);
-              },
-              child: const Text('Save'),
-            ),
-            const SizedBox(height: 8.0),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context);
-              },
-              child: const Text('Cancel'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextFormField(
+                controller: widget.titleController,
+                decoration: const InputDecoration(labelText: 'Title'),
+              ),
+              const SizedBox(height: 16.0),
+              DropdownButtonFormField(
+                value: widget.selectedCategory,
+                items: [
+                  'Work',
+                  'Personal',
+                  'Shopping',
+                  'Ideas',
+                  'Project',
+                  'Meetings',
+                  'Education',
+                  'Finance',
+                  'Health',
+                  'Travel'
+                ]
+                    .map((category) => DropdownMenuItem(
+                          value: category,
+                          child: Text(category),
+                        ))
+                    .toList(),
+                decoration: const InputDecoration(labelText: 'Category'),
+                onChanged: (value) {
+                  setState(() {
+                    widget.selectedCategory = value.toString();
+                  });
+                },
+              ),
+              const SizedBox(height: 16.0),
+              TextFormField(
+                controller: widget.contentController,
+                decoration: const InputDecoration(labelText: 'Note Content'),
+                maxLines: 14,
+              ),
+              const SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  saveNote(context);
+                },
+                child: const Text('Save'),
+              ),
+              const SizedBox(height: 8.0),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: const Text('Cancel'),
+              ),
+            ],
+          ),
         ),
       ),
     );

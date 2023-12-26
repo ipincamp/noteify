@@ -7,7 +7,7 @@ import 'package:noteify/repository.dart';
 class EditNotePage extends StatefulWidget {
   final Note note;
 
-  const EditNotePage({super.key, required this.note});
+  const EditNotePage({Key? key, required this.note}) : super(key: key);
 
   @override
   _EditNotePageState createState() => _EditNotePageState();
@@ -34,63 +34,65 @@ class _EditNotePageState extends State<EditNotePage> {
       appBar: AppBar(
         title: const Text('Edit Note'),
       ),
-      body: Container(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            TextFormField(
-              controller: titleController,
-              decoration: const InputDecoration(labelText: 'Title'),
-            ),
-            const SizedBox(height: 16.0),
-            DropdownButtonFormField(
-              value: selectedCategory,
-              items: [
-                'Work',
-                'Personal',
-                'Shopping',
-                'Ideas',
-                'Project',
-                'Meetings',
-                'Education',
-                'Finance',
-                'Health',
-                'Travel'
-              ]
-                  .map((category) => DropdownMenuItem(
-                        value: category,
-                        child: Text(category),
-                      ))
-                  .toList(),
-              decoration: const InputDecoration(labelText: 'Category'),
-              onChanged: (value) {
-                setState(() {
-                  selectedCategory = value.toString();
-                });
-              },
-            ),
-            const SizedBox(height: 16.0),
-            TextFormField(
-              controller: contentController,
-              decoration: const InputDecoration(labelText: 'Note Content'),
-              maxLines: 5,
-            ),
-            const SizedBox(height: 16.0),
-            ElevatedButton(
-              onPressed: () {
-                saveEditedNoteAndNavigateBack(context);
-              },
-              child: const Text('Save'),
-            ),
-            const SizedBox(height: 8.0),
-            TextButton(
-              onPressed: () {
-                Navigator.pop(context, false);
-              },
-              child: const Text('Cancel'),
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Container(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              TextFormField(
+                controller: titleController,
+                decoration: const InputDecoration(labelText: 'Title'),
+              ),
+              const SizedBox(height: 16.0),
+              DropdownButtonFormField(
+                value: selectedCategory,
+                items: [
+                  'Work',
+                  'Personal',
+                  'Shopping',
+                  'Ideas',
+                  'Project',
+                  'Meetings',
+                  'Education',
+                  'Finance',
+                  'Health',
+                  'Travel'
+                ]
+                    .map((category) => DropdownMenuItem(
+                          value: category,
+                          child: Text(category),
+                        ))
+                    .toList(),
+                decoration: const InputDecoration(labelText: 'Category'),
+                onChanged: (value) {
+                  setState(() {
+                    selectedCategory = value.toString();
+                  });
+                },
+              ),
+              const SizedBox(height: 16.0),
+              TextFormField(
+                controller: contentController,
+                decoration: const InputDecoration(labelText: 'Note Content'),
+                maxLines: 5,
+              ),
+              const SizedBox(height: 16.0),
+              ElevatedButton(
+                onPressed: () {
+                  saveEditedNoteAndNavigateBack(context);
+                },
+                child: const Text('Save'),
+              ),
+              const SizedBox(height: 8.0),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context, false);
+                },
+                child: const Text('Cancel'),
+              ),
+            ],
+          ),
         ),
       ),
     );
